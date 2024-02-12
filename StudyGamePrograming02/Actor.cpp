@@ -51,9 +51,7 @@ void Actor::AddComponent(Component* component)
 	// ソート済みの配列で挿入点を見つける
 	int myOrder = component->GetUpdateOrder();
 	auto iter = mComponents.begin();
-	for (;
-		iter != mComponents.end();
-		++iter)
+	for (iter = mComponents.begin(); iter != mComponents.end();	iter++)
 	{
 		if (myOrder < (*iter)->GetUpdateOrder())
 		{
