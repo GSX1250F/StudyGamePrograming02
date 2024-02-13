@@ -25,27 +25,19 @@ void AnimSpriteComponent::Update(float deltaTime)
 		if (mLoopFlag == false) {
 			if (mCurrFrame >= mAnimNumLast - (mAnimNumBeg - 1))
 			{
-				mCurrFrame += (mAnimNumLast - mAnimNumBeg) - static_cast<int>(mCurrFrame);	//mCurrFrameはFloatなので、小数部分を加えておく。
+				mIsAnimating = false;	// アニメーションが止まった
+				mCurrFrame = (mAnimNumLast - mAnimNumBeg) +0.99f;	//次のUpdate時に同じくifが成立するようにしておく。
 			}
+			else { mIsAnimating = true; }	// アニメーション中
 			//if (mLoopFlag == false)std::cout << static_cast<int>(mCurrFrame) << "\n";
 		}
 		else {
-
+			mIsAnimating = true;		// ループアニメはアニメーション中とする。
 			// 必要に応じてカレントフレームを巻き戻す
 			while (mCurrFrame >= mAnimNumLast - (mAnimNumBeg - 1))
 			{
 				mCurrFrame -= (mAnimNumLast - (mAnimNumBeg - 1));
 			}
-		}
-		
-		// アニメーション中かどうかの判断
-		if (mCurrFrame > mAnimNumLast - (mAnimNumBeg))
-		{
-			mIsAnimating = false;
-		}
-		else
-		{
-			mIsAnimating = true;
 		}
 
 
