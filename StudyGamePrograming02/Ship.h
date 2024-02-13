@@ -1,6 +1,6 @@
 #pragma once
 #include "Actor.h"
-class Ship : public Actor
+class Ship : public Actor		//Actor‚ÌŽqƒNƒ‰ƒX
 {
 public:
 	Ship(class Game* game);

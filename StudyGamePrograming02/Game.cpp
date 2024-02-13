@@ -85,6 +85,7 @@ void Game::ProcessInput()
 
 	// ‰F’ˆ‘D‚Ì‘€ì
 	mShip->ProcessKeyboard(state);
+	// l‚Ì‘€ì
 	mCharacter->ProcessKeyboard(state);
 }
 

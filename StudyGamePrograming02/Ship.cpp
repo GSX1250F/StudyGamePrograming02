@@ -2,11 +2,11 @@
 #include "AnimSpriteComponent.h"
 #include "Game.h"
 
-Ship::Ship(Game* game)
-	:Actor(game)
-	, mRightSpeed(0.0f)
-	, mDownSpeed(0.0f)
+Ship::Ship(Game* game) : Actor(game)		//Actorの子クラス
 {
+	mRightSpeed = 0.0f;
+	mDownSpeed = 0.0f;
+
 	// アニメーションのスプライトコンポーネントを作成
 	AnimSpriteComponent* asc = new AnimSpriteComponent(this);
 	std::vector<SDL_Texture*> anims = {
@@ -48,6 +48,7 @@ void Ship::UpdateActor(float deltaTime)
 void Ship::ProcessKeyboard(const uint8_t* state)
 {
 	// 入力に基づいて速度を変更
+	// 一旦スピードを 0 にリセットすることで、キーを押し続けていても加速しない。
 	mRightSpeed = 0.0f;
 	mDownSpeed = 0.0f;
 	// right/left

@@ -2,10 +2,10 @@
 #include "AnimSpriteComponent.h"
 #include "Game.h"
 
-Character::Character(Game* game)
-	:Actor(game),
-	mRightSpeed(0.0f),
-	mDownSpeed(0.0f) {
+Character::Character(Game* game) : Actor(game)		//Actorの子クラス
+{
+	mRightSpeed = 0.0f;
+	mDownSpeed = 0.0f;
 	AnimSpriteComponent* asc = new AnimSpriteComponent(this);
 	std::vector<SDL_Texture*> anims = {
 		game->GetTexture("Assets/Character01.png"),
@@ -30,7 +30,8 @@ Character::Character(Game* game)
 	asc->SetAnimTextures(anims, 1, 6,true);
 	mAnimComponent = asc;
 }
-void Character::UpdateActor(float deltaTime) {
+void Character::UpdateActor(float deltaTime) 
+{
 	Actor::UpdateActor(deltaTime);
 	// 速度とデルタタイムに基づいて位置を更新する
 	Vector2 pos = GetPosition();
@@ -58,18 +59,20 @@ void Character::UpdateActor(float deltaTime) {
 
 void Character::ProcessKeyboard(const uint8_t* state)
 {
+	// 入力に基づいて速度を変更
+	// 一旦スピードを 0 にリセットすることで、キーを押し続けていても加速しない。
 	mRightSpeed = 0.0f;
 	mDownSpeed = 0.0f;
 	// right/left
 	if (state[SDL_SCANCODE_K])
 	{
 		mRightSpeed += 250.0f;
-		mAnimComponent->SetAnimNum(1, 6, true);
+		//mAnimComponent->SetAnimNum(1, 6, true);
 	}
 	if (state[SDL_SCANCODE_H])
 	{
 		mRightSpeed -= 250.0f;
-		mAnimComponent->SetAnimNum(1, 6, true);
+		//mAnimComponent->SetAnimNum(1, 6, true);
 	}
 	// up/down
 	if (state[SDL_SCANCODE_J])
