@@ -65,23 +65,23 @@ void Character::ProcessKeyboard(const uint8_t* state)
 	mDownSpeed = 0.0f;
 
 	// right/left
-	if (state[SDL_SCANCODE_K])
+	if (state[SDL_SCANCODE_RIGHT])
 	{
 		mRightSpeed += 250.0f;
 		if(mAnimComponent->mIsAnimating == false){ mAnimComponent->SetAnimNum(1, 6, true); }
 	}
-	else if (state[SDL_SCANCODE_H])
+	else if (state[SDL_SCANCODE_LEFT])
 	{
 		mRightSpeed -= 250.0f;
 		if (mAnimComponent->mIsAnimating == false) { mAnimComponent->SetAnimNum(1, 6, true); }
 	}
 	// up/down
-	else if (state[SDL_SCANCODE_J])
+	else if (state[SDL_SCANCODE_DOWN])
 	{
 		mDownSpeed += 300.0f;
 		if (mAnimComponent->mIsAnimating == false) { mAnimComponent->SetAnimNum(1, 6, true); }
 	}
-	else if (state[SDL_SCANCODE_U])
+	else if (state[SDL_SCANCODE_UP])
 	{
 		mDownSpeed -= 300.0f;
 		if (mAnimComponent->mIsAnimating == false) { mAnimComponent->SetAnimNum(1, 6, true); }
