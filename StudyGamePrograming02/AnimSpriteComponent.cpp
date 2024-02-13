@@ -20,11 +20,16 @@ void AnimSpriteComponent::Update(float deltaTime)
 		// フレームレートとデルタタイムに基づいて
 		// カレントフレームを更新する
 		mCurrFrame += mAnimFPS * deltaTime;
-
+		if (mCurrFrame >= 0 && mCurrFrame <= mAnimNumLast - (mAnimNumBeg)) { mIsAnimating = true; }
+		else { mIsAnimating = false; }
 		// ループさせないアニメーションは止める
 		if (mLoopFlag == false) {
-			if(mCurrFrame >= mAnimNumLast - (mAnimNumBeg - 1))mCurrFrame = mAnimNumLast - (mAnimNumBeg);
-			if (mLoopFlag == false)std::cout << static_cast<int>(mCurrFrame) << "\n";
+			if (mCurrFrame >= mAnimNumLast - (mAnimNumBeg - 1))
+			{
+				mCurrFrame = mAnimNumLast - (mAnimNumBeg);
+				mIsAnimating = false;
+			}
+			//if (mLoopFlag == false)std::cout << static_cast<int>(mCurrFrame) << "\n";
 		}
 		else {
 			// 必要に応じてカレントフレームを巻き戻す

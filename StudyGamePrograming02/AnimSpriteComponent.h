@@ -21,6 +21,12 @@ public:
 	int GetAnimNumLast() { return mAnimNumLast; }
 	int GetAnimNumCurr() { return static_cast<int>(mCurrFrame); }
 
+	// アニメーションをループさせるか
+	bool mLoopFlag;
+	
+	// アニメーション中かどうか
+	bool mIsAnimating;
+
 private:
 	// アニメーションでのすべてのテクスチャ
 	std::vector<SDL_Texture*> mAnimTextures;
@@ -31,6 +37,5 @@ private:
 	float mCurrFrame;
 	// アニメーションのフレームレート
 	float mAnimFPS;
-	// アニメーションをループさせるか
-	bool mLoopFlag;
+	
 };
