@@ -61,30 +61,35 @@ void Character::ProcessKeyboard(const uint8_t* state)
 {
 	// 入力に基づいて速度を変更
 	// 一旦スピードを 0 にリセットすることで、キーを押し続けていても加速しない。
+	int mAnimNumBeg = mAnimComponent->GetAnimNumBeg();
+	int mAnimNumLast = mAnimComponent->GetAnimNumLast();
+	int mAnimNumCurr = mAnimComponent->GetAnimNumCurr();
+
 	mRightSpeed = 0.0f;
 	mDownSpeed = 0.0f;
+
 	// right/left
 	if (state[SDL_SCANCODE_K])
 	{
 		mRightSpeed += 250.0f;
-		//mAnimComponent->SetAnimNum(1, 6, true);
 	}
-	if (state[SDL_SCANCODE_H])
+	else if (state[SDL_SCANCODE_H])
 	{
 		mRightSpeed -= 250.0f;
-		//mAnimComponent->SetAnimNum(1, 6, true);
 	}
 	// up/down
-	if (state[SDL_SCANCODE_J])
+	else if (state[SDL_SCANCODE_J])
 	{
 		mDownSpeed += 300.0f;
 	}
-	if (state[SDL_SCANCODE_U])
+	else if (state[SDL_SCANCODE_U])
 	{
 		mDownSpeed -= 300.0f;
 	}
-	if (state[SDL_SCANCODE_SPACE])
+	else if (state[SDL_SCANCODE_SPACE])
 	{
 		mAnimComponent->SetAnimNum(16, 18, false);
 	}
+	
+
 }

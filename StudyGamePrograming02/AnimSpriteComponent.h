@@ -15,6 +15,12 @@ public:
 	// アニメーションのFPSを設定 / 取得
 	float GetAnimFPS() const { return mAnimFPS; }
 	void SetAnimFPS(float fps) { mAnimFPS = fps; }
+
+	// 現在表示中のアニメーションの情報取得
+	int GetAnimNumBeg() { return mAnimNumBeg; }
+	int GetAnimNumLast() { return mAnimNumLast; }
+	int GetAnimNumCurr() { return static_cast<int>(mCurrFrame); }
+
 private:
 	// アニメーションでのすべてのテクスチャ
 	std::vector<SDL_Texture*> mAnimTextures;
