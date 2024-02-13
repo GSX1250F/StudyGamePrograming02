@@ -20,21 +20,12 @@ void AnimSpriteComponent::Update(float deltaTime)
 		// フレームレートとデルタタイムに基づいて
 		// カレントフレームを更新する
 		mCurrFrame += mAnimFPS * deltaTime;
-		if (mCurrFrame >= mAnimNumLast - (mAnimNumBeg)) 
-		{
-			mIsAnimating = false; 
-		}
-		else 
-		{
-			mIsAnimating = true; 
-		}
-
+		
 		// ループさせないアニメーションは止める
 		if (mLoopFlag == false) {
 			if (mCurrFrame >= mAnimNumLast - (mAnimNumBeg - 1))
 			{
-				mCurrFrame = mAnimNumLast - (mAnimNumBeg);
-				mIsAnimating = false;
+				mCurrFrame += (mAnimNumLast - mAnimNumBeg) - static_cast<int>(mCurrFrame);	//mCurrFrameはFloatなので、小数部分を加えておく。
 			}
 			//if (mLoopFlag == false)std::cout << static_cast<int>(mCurrFrame) << "\n";
 		}
@@ -47,6 +38,17 @@ void AnimSpriteComponent::Update(float deltaTime)
 			}
 		}
 		
+		// アニメーション中かどうかの判断
+		if (mCurrFrame > mAnimNumLast - (mAnimNumBeg))
+		{
+			mIsAnimating = false;
+		}
+		else
+		{
+			mIsAnimating = true;
+		}
+
+
 		// 現時点でのテクスチャを設定する
 		SetTexture(mAnimTextures[static_cast<int>(mCurrFrame) + (mAnimNumBeg - 1)]);
 	}
