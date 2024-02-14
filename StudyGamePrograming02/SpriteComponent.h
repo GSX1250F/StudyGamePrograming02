@@ -1,7 +1,7 @@
 #pragma once
 #include "Component.h"
 #include "SDL.h"
-class SpriteComponent : public Component
+class SpriteComponent : public Component		// Componentの子クラス
 {
 public:
 	// 描画準備(drawOrder)が低いほど遠くに置かれる

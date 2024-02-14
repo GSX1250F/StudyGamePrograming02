@@ -38,21 +38,21 @@ void Character::UpdateActor(float deltaTime)
 	pos.x += mRightSpeed * deltaTime;
 	pos.y += mDownSpeed * deltaTime;
 	// à íuÇâÊñ ÇÃç∂îºï™Ç…êßå¿Ç∑ÇÈ
-	if (pos.x < 25.0f)
+	if (pos.x < 70.0f)
 	{
-		pos.x = 25.0f;
+		pos.x = 70.0f;
 	}
-	else if (pos.x > 500.0f)
+	else if (pos.x > 1040.0f)
 	{
-		pos.x = 500.0f;
+		pos.x = 1040.0f;
 	}
-	if (pos.y < 25.0f)
+	if (pos.y < 40.0f)
 	{
-		pos.y = 25.0f;
+		pos.y = 40.0f;
 	}
-	else if (pos.y > 743.0f)
+	else if (pos.y > 670.0f)
 	{
-		pos.y = 743.0f;
+		pos.y = 670.0f;
 	}
 	SetPosition(pos);
 }

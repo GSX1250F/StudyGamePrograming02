@@ -3,10 +3,10 @@
 #include "SpriteComponent.h"
 #include <vector>
 #include "Math.h"
-class BGSpriteComponent : public SpriteComponent
+class BGSpriteComponent : public SpriteComponent		// Componentの子クラスSpriteComponentの子クラス
 {
 public:
-	// 描画順序の初期値は下げる(だからこそ背景となる)
+	// 背景のコンストラクタ。指定されない場合の描画順序の初期値は10とする(早く描画されることで背景となる)
 	BGSpriteComponent(class Actor* owner, int drawOrder = 10);
 	/// 更新と描画は親からオーバーライドする
 	void Update(float deltaTime) override;

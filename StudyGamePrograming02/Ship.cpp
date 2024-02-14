@@ -26,13 +26,13 @@ void Ship::UpdateActor(float deltaTime)
 	pos.x += mRightSpeed * deltaTime;
 	pos.y += mDownSpeed * deltaTime;
 	// ˆÊ’u‚ğ‰æ–Ê‚Ì¶”¼•ª‚É§ŒÀ‚·‚é
-	if (pos.x < 25.0f)
+	if (pos.x < 40.0f)
 	{
-		pos.x = 25.0f;
+		pos.x = 40.0f;
 	}
-	else if (pos.x > 500.0f)
+	else if (pos.x > 1000.0f)
 	{
-		pos.x = 500.0f;
+		pos.x = 1000.0f;
 	}
 	if (pos.y < 25.0f)
 	{

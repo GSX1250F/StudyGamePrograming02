@@ -1,10 +1,9 @@
 #include "BGSpriteComponent.h"
 #include "Actor.h"
 
-BGSpriteComponent::BGSpriteComponent(class Actor* owner, int drawOrder)
-	:SpriteComponent(owner, drawOrder)
-	, mScrollSpeed(0.0f)
+BGSpriteComponent::BGSpriteComponent(class Actor* owner, int drawOrder)	:SpriteComponent(owner, drawOrder)
 {
+	mScrollSpeed = 0.0f;
 }
 
 void BGSpriteComponent::Update(float deltaTime)

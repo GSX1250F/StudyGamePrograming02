@@ -2,7 +2,7 @@
 #pragma once
 #include "SpriteComponent.h"
 #include <vector>
-class AnimSpriteComponent : public SpriteComponent
+class AnimSpriteComponent : public SpriteComponent		// Componentの子クラスSpriteComponentの子クラス
 {
 public:
 	AnimSpriteComponent(class Actor* owner, int drawOrder = 100);

@@ -6,7 +6,8 @@
 #include <sstream>
 #include <iostream>
 
-class TileMapComponent : public SpriteComponent {
+class TileMapComponent : public SpriteComponent			// Componentの子クラスSpriteComponentの子クラス
+{
 public:
 	TileMapComponent(class Actor* owner, int drawOrder = 10);
 

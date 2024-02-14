@@ -46,6 +46,7 @@ bool Game::Initialize()
 		return false;
 	}
 
+	// スプライトや背景などのデータを読み込み
 	LoadData();
 
 	mTicksCount = SDL_GetTicks();
@@ -66,7 +67,7 @@ void Game::RunLoop()
 void Game::ProcessInput()
 {
 	SDL_Event event;
-	// キューにイベントがあれば繰り返す
+	// SDLイベントにキューがある間は入力を受け付けない。
 	while (SDL_PollEvent(&event))
 	{
 		switch (event.type)
@@ -77,7 +78,10 @@ void Game::ProcessInput()
 		}
 	}
 
+	// キーボード入力の受付
 	const Uint8* state = SDL_GetKeyboardState(NULL);
+
+	// ESCが押されたとき→Shutdown
 	if (state[SDL_SCANCODE_ESCAPE])
 	{
 		mIsRunning = false;
@@ -85,8 +89,11 @@ void Game::ProcessInput()
 
 	// 宇宙船の操作
 	mShip->ProcessKeyboard(state);
+	
+	/*
 	// 人の操作
 	mCharacter->ProcessKeyboard(state);
+	*/
 }
 
 void Game::UpdateGame()
@@ -159,25 +166,28 @@ void Game::LoadData()
 	mShip->SetPosition(Vector2(100.0f, 384.0f));
 	mShip->SetScale(1.5f);
 
+	/*
 	// プレイヤーであるキャラクターを作成
 	mCharacter = new Character(this);
 	mCharacter->SetPosition(Vector2(100.0f, 384.0f));
 	mCharacter->SetScale(1.5f);
-	/*
+	*/
+
 	// 背景用アクターを作る
-	Actor* temp = new Actor(this);
-	temp->SetPosition(Vector2(512.0f, 384.0f));
+	Actor* bgactors = new Actor(this);
+	bgactors->SetPosition(Vector2(512.0f, 384.0f));
+
 	// 一番後ろの背景を作成
-	BGSpriteComponent* bg = new BGSpriteComponent(temp);
+	BGSpriteComponent* bg = new BGSpriteComponent(bgactors,10);		//描画順序の初期値を省略も可能。
 	bg->SetScreenSize(Vector2(1024.0f, 768.0f));
 	std::vector<SDL_Texture*> bgtexs = {
-		GetTexture("Assets/Farback01.png"),
-		GetTexture("Assets/Farback02.png")
+		GetTexture("Assets/Farback01.png")
+		,GetTexture("Assets/Farback02.png")
 	};
 	bg->SetBGTextures(bgtexs);
-	bg->SetScrollSpeed(-100.0f);
+	bg->SetScrollSpeed(-10.0f);
 	// 手前の背景を作成
-	bg = new BGSpriteComponent(temp, 50);
+	bg = new BGSpriteComponent(bgactors, 50);
 	bg->SetScreenSize(Vector2(1024.0f, 768.0f));
 	bgtexs = {
 		GetTexture("Assets/Stars.png"),
@@ -185,7 +195,9 @@ void Game::LoadData()
 	};
 	bg->SetBGTextures(bgtexs);
 	bg->SetScrollSpeed(-200.0f);
-	*/
+	
+	
+	/*
 	// タイルマップ生成
 	Actor* temp_tm = new Actor(this);
 	temp_tm->SetPosition(Vector2(16.0f, 16.0f));
@@ -193,6 +205,7 @@ void Game::LoadData()
 	TileMapComponent* tm = new TileMapComponent(temp_tm);
 	SDL_Texture* tiletex = GetTexture("Assets/Tiles.png");
 	tm->SetTileMap(tiletex);
+	*/
 }
 
 void Game::UnloadData()

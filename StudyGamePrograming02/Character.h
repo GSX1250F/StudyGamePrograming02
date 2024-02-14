@@ -1,7 +1,8 @@
 #pragma once
 #include "Actor.h"
 
-class Character : public Actor {
+class Character : public Actor		// Actor‚ÌŽqƒNƒ‰ƒX
+{
 public:
 	Character(class Game* game);
 	void UpdateActor(float deltaTime) override;
