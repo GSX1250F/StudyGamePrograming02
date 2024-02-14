@@ -3,13 +3,17 @@
 #include "SpriteComponent.h"
 #include <vector>
 #include "Math.h"
+
+
+
 class BGSpriteComponent : public SpriteComponent		// Componentの子クラスSpriteComponentの子クラス
 {
 public:
 	// 背景のコンストラクタ。指定されない場合の描画順序の初期値は10とする(早く描画されることで背景となる)
 	BGSpriteComponent(class Actor* owner, int drawOrder = 10);
-	/// 更新と描画は親からオーバーライドする
+	// 更新は親からオーバーライドする。スクロールを設定するため
 	void Update(float deltaTime) override;
+	// 描画は親からオーバーライドする。画面の大きさに置くため。
 	void Draw(SDL_Renderer* renderer) override;
 	// 背景用のテクスチャを設定する
 	void SetBGTextures(const std::vector<SDL_Texture*>& textures);

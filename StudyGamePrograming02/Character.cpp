@@ -2,8 +2,9 @@
 #include "AnimSpriteComponent.h"
 #include "Game.h"
 
-Character::Character(Game* game) : Actor(game)		//Actor‚ÌŽqƒNƒ‰ƒX
+Character::Character(Game* game) : Actor(game)
 {
+	
 	mRightSpeed = 0.0f;
 	mDownSpeed = 0.0f;
 	AnimSpriteComponent* asc = new AnimSpriteComponent(this);

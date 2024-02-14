@@ -3,11 +3,10 @@
 #include "Actor.h"
 #include "Math.h"
 
-TileMapComponent::TileMapComponent(class Actor* owner, int drawOrder)
-	:SpriteComponent(owner, drawOrder),
-	mTileTexture(nullptr),
-	mDrawOrder(drawOrder) {
-
+TileMapComponent::TileMapComponent(class Actor* owner, int drawOrder) : SpriteComponent(owner, drawOrder)
+{
+	mTileTexture = nullptr;
+	mDrawOrder = drawOrder;
 }
 
 void TileMapComponent::Draw(SDL_Renderer* renderer) {
@@ -36,8 +35,8 @@ void TileMapComponent::Draw(SDL_Renderer* renderer) {
 
 }
 
-bool TileMapComponent::GetMapLayer(const std::vector<std::string>& filenames, const char delimiter) {
-
+bool TileMapComponent::GetMapLayer(const std::vector<std::string>& filenames, const char delimiter) 
+{
 	for (std::string filename : filenames) {
 
 		mTileSets.emplace_back();
@@ -73,7 +72,8 @@ bool TileMapComponent::GetMapLayer(const std::vector<std::string>& filenames, co
 	return true;
 }
 
-void TileMapComponent::SetTileMap(SDL_Texture* tile_texture) {
+void TileMapComponent::SetTileMap(SDL_Texture* tile_texture) 
+{
 	mTileTexture = tile_texture;
 	// テクスチャの幅と高さを求める
 	SDL_QueryTexture(tile_texture, nullptr, nullptr, &mTexWidth, &mTexHeight);
@@ -81,7 +81,7 @@ void TileMapComponent::SetTileMap(SDL_Texture* tile_texture) {
 	std::vector<std::string> filenames = {
 		"Assets/MapLayer1.csv",
 		"Assets/MapLayer2.csv",
-		"Assets/MapLayer3.csv",
+		"Assets/MapLayer3.csv",		//後のものほど後
 	};
 
 	// CSVファイルの内容を取得する

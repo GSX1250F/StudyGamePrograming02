@@ -187,25 +187,25 @@ void Game::LoadData()
 	bg->SetBGTextures(bgtexs);
 	bg->SetScrollSpeed(-10.0f);
 	// 手前の背景を作成
-	bg = new BGSpriteComponent(bgactors, 50);
+	bg = new BGSpriteComponent(bgactors, 20);		//描画順序は一つ大きい値にする
 	bg->SetScreenSize(Vector2(1024.0f, 768.0f));
 	bgtexs = {
 		GetTexture("Assets/Stars.png"),
 		GetTexture("Assets/Stars.png")
 	};
 	bg->SetBGTextures(bgtexs);
-	bg->SetScrollSpeed(-200.0f);
+	bg->SetScrollSpeed(-50.0f);
 	
 	
-	/*
+	
 	// タイルマップ生成
-	Actor* temp_tm = new Actor(this);
-	temp_tm->SetPosition(Vector2(16.0f, 16.0f));
+	Actor* tmactors = new Actor(this);
+	tmactors->SetPosition(Vector2(16.0f, 16.0f));
 
-	TileMapComponent* tm = new TileMapComponent(temp_tm);
+	TileMapComponent* tm = new TileMapComponent(tmactors, 30);
 	SDL_Texture* tiletex = GetTexture("Assets/Tiles.png");
 	tm->SetTileMap(tiletex);
-	*/
+	
 }
 
 void Game::UnloadData()
