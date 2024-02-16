@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 #include "SpriteComponent.h"
 #include <vector>
 #include "Math.h"
