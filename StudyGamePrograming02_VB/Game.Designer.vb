@@ -48,7 +48,7 @@ Partial Class Game
         ClientSize = New Size(1025, 770)
         Controls.Add(PictureBox)
         Name = "Game"
-        Text = "Game"
+        Text = "StudyGamePrograming VB"
         CType(PictureBox, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
